@@ -1,0 +1,25 @@
+<description>Builds, tests, and runs the project Address.</description>
+    <import file="nbproject/build-impl.xml"/>
+    
+
+<target name="test" depends="compile-test,-pre-test-run">
+    <java dir="${work.dir}" 
+          classpath="${run.test.classpath}"  
+          classname="org.junit.platform.console.ConsoleLauncher">
+        <arg value="--scan-classpath"/>
+        <arg line="--reports-dir build/test/results"/>
+    </java>
+    <junitreport todir="build/test/results">
+        <fileset dir="build/test/results">
+            <include name="TEST-*.xml"/>
+        </fileset>
+        <report format="frames" todir="build/test/results/html"/>
+    </junitreport>
+</target>
+
+
+    
+
+
+
+</project>
